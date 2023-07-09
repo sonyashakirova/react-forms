@@ -1,4 +1,5 @@
 import { useRef } from "react"
+import IconAt from "../../assets/at.svg"
 import { Radio, RadioSet, TextInput } from "../atoms"
 
 export function Signup({ onSubmit }) {
@@ -42,6 +43,7 @@ export function Signup({ onSubmit }) {
           placeholder="username123"
           label="Ник"
           description="Только буквы латинского алфавита и цифры"
+          icon={<IconAt />}
         />
         <TextInput
           id="signup-email"
