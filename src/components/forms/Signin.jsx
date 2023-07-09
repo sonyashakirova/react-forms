@@ -1,32 +1,19 @@
 import { useRef } from "react"
+import { useForm } from "../../hooks/useForm"
 import { TextInput } from "../atoms"
 
+const initialValues = {
+  email: "",
+  password: "",
+}
+
 export function Signin({ onSubmit }) {
-  const formRef = useRef(null)
-  const inputs = useRef({
-    email: "",
-    password: "",
-  })
-
-  function handleChange(event) {
-    inputs.current = {
-      ...inputs.current,
-      [event.target.name]: event.target.value,
-    }
-  }
-
-  function handleSubmit(event) {
-    event.preventDefault()
-    onSubmit(inputs.current)
-    formRef.current.reset()
-  }
-
-  function handleReset() {
-    inputs.current = {
-      email: "",
-      password: "",
-    }
-  }
+  const {
+    handleChange,
+    handleSubmit,
+    handleReset,
+    formRef,
+  } = useForm(initialValues, onSubmit)
 
   return (
     <div className="form-wrapper">

@@ -1,41 +1,24 @@
 import { useRef } from "react"
 import IconAt from "../../assets/at.svg"
 import { Radio, RadioSet, TextInput } from "../atoms"
+import { useForm } from "../../hooks/useForm"
+
+const initialValues = {
+  name: "",
+  username: "",
+  email: "",
+  sex: "",
+  password: "",
+  repeatPassword: "",
+}
 
 export function Signup({ onSubmit }) {
-  const formRef = useRef(null)
-  const inputs = useRef({
-    name: "",
-    username: "",
-    email: "",
-    sex: "",
-    password: "",
-    repeatPassword: "",
-  })
-
-  function handleChange(event) {
-    inputs.current = {
-      ...inputs.current,
-      [event.target.name]: event.target.value,
-    }
-  }
-
-  function handleSubmit(event) {
-    event.preventDefault()
-    onSubmit(inputs.current)
-    formRef.current.reset()
-  }
-
-  function handleReset() {
-    inputs.current = {
-      name: "",
-      username: "",
-      email: "",
-      sex: "",
-      password: "",
-      repeatPassword: "",
-    }
-  }
+  const {
+    handleChange,
+    handleSubmit,
+    handleReset,
+    formRef,
+  } = useForm(initialValues, onSubmit)
 
   return (
     <div className="form-wrapper">
