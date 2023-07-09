@@ -1,5 +1,6 @@
 import { Signin } from "./forms/Signin"
 import { Signup } from "./forms/Signup"
+import "../styles.scss"
 
 export function App() {
   function onSubmit(values) {
