@@ -1,4 +1,5 @@
 import { Signin } from "./forms/Signin"
+import { Signup } from "./forms/Signup"
 
 export function App() {
   function onSubmit(values) {
@@ -8,6 +9,7 @@ export function App() {
   return (
     <div className="app-wrapper">
       <Signin onSubmit={onSubmit} />
+      <Signup onSubmit={onSubmit} />
     </div>
   )
 }
