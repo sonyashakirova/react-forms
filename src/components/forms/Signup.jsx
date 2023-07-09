@@ -3,6 +3,7 @@ import IconAt from "../../assets/at.svg"
 import { Radio, RadioSet, TextInput } from "../atoms"
 
 export function Signup({ onSubmit }) {
+  const formRef = useRef(null)
   const inputs = useRef({
     name: "",
     username: "",
@@ -22,14 +23,28 @@ export function Signup({ onSubmit }) {
   function handleSubmit(event) {
     event.preventDefault()
     onSubmit(inputs.current)
+    formRef.current.reset()
+  }
+
+  function handleReset() {
+    inputs.current = {
+      name: "",
+      username: "",
+      email: "",
+      sex: "",
+      password: "",
+      repeatPassword: "",
+    }
   }
 
   return (
     <div className="form-wrapper">
       <form
         className="form"
+        ref={formRef}
         onChange={handleChange}
         onSubmit={handleSubmit}
+        onReset={handleReset}
       >
         <TextInput
           id="signup-name"
