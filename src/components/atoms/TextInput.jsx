@@ -1,3 +1,5 @@
+import classNames from "classnames"
+
 export function TextInput({
   id,
   description,
@@ -14,13 +16,14 @@ export function TextInput({
   variant="default",
   withAsterisk=true,
 }) {
-  const classNames = ["input"]
-
-  if (variant) classNames.push(`input-${variant}`)
-  if (radius) classNames.push(`input-radius-${radius}`)
-  if (size) classNames.push(`input-size-${size}`)
-  if (icon) classNames.push("input-with-icon")
-  if (error) classNames.push("input-error")
+  const inputClass = classNames(
+    "input",
+    `input-${variant}`,
+    `input-radius-${radius}`,
+    `input-size-${size}`,
+    { "input-with-icon": icon },
+    { "input-error": error }
+  )
 
   return (
     <div>
@@ -35,7 +38,7 @@ export function TextInput({
         <div className="input-icon">{icon}</div>
         <input
           id={id}
-          className={classNames.join(" ")}
+          className={inputClass}
           name={name}
           type={type}
           placeholder={placeholder}
